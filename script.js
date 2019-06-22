@@ -32,13 +32,20 @@
     var q3 = new Question('Which one is a reptile', ['Lion','Eagle','Snake'], 2);
     
     var questions = [q1,q2,q3];
-    var n = Math.floor(Math.random()*questions.length);
-    
-    questions[n].displayQuestion();
-    
-    var answer = parseInt(prompt('Please select the correct answer'));
-    
-    questions[n].checkAnswer(answer);
-
+    function nextQuestion(){
+        
+        var n = Math.floor(Math.random()*questions.length);
+        
+        questions[n].displayQuestion();
+        
+        var answer = prompt('Please select the correct answer');
+        
+        if(answer!=='exit'){
+            questions[n].checkAnswer(parseInt(answer));
+            nextQuestion()
+        }
+    }
+    nextQuestion();
+   
 })();
 
